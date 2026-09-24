@@ -43,7 +43,7 @@ Các bộ lọc hiển thị (Display Filters) được áp dụng trên Wiresha
 ### Bước 2: Thiết lập kết nối (TCP 3-Way Handshake)
 * **Bộ lọc:** `tcp.port == 80`
 <img width="1504" height="362" alt="image" src="https://github.com/user-attachments/assets/e892a4f4-f552-4fba-978f-127a7a673400" />
-* **Hiện tượng & Phân tích:**
+* **Hiện tượng & Phân tích:** *
   *Quá trình bắt tay 3 bước diễn ra tin cậy giữa Client (port ngẫu nhiên `62437`) và Server (port `80`):
   *1. **Packet #19 [SYN]:** Client gửi cờ `SYN`, khởi tạo phiên và thống nhất số thứ tự tuần tự ban đầu (`Seq = 0`).
   *2. **Packet #20 [SYN, ACK]:** Server chấp thuận kết nối, gửi lại cờ `SYN-ACK`, xác nhận Sequence number tiếp theo (`Ack = 1`).
