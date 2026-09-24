@@ -32,6 +32,7 @@ Các bộ lọc hiển thị (Display Filters) được áp dụng trên Wiresha
 * **Bộ lọc:** `dns`
 <img width="1724" height="236" alt="image" src="https://github.com/user-attachments/assets/db529af3-9096-4620-8c6f-486e490b71fd" />
 * **Hiện tượng & Phân tích:**
+* 
   * Client (`fd00:db80::1527:...`) gửi 2 truy vấn song song đến Local DNS Server (`fd00:db80::1`):
     * Record Type `A` (yêu cầu địa chỉ IPv4).
     * Record Type `AAAA` (yêu cầu địa chỉ IPv6).
