@@ -1,4 +1,4 @@
-<img width="1724" height="236" alt="image" src="https://github.com/user-attachments/assets/50b0c8ec-6546-4957-859b-1adaae0f9403" /># Phân Tích Giao Thức Mạng & Lưu Lượng Baseline (Wireshark)
+# Phân Tích Giao Thức Mạng & Lưu Lượng Baseline (Wireshark)
 
 * **Đối tượng phân tích:** Lưu lượng HTTP/DNS từ truy vấn web thực tế
 * **Môi trường:** Windows 10, Wireshark, CLI (`curl`)
