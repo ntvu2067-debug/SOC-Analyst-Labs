@@ -30,25 +30,28 @@ Các bộ lọc hiển thị (Display Filters) được áp dụng trên Wiresha
 ### Bước 1: Phân giải tên miền (DNS Resolution)
 * **Thao tác kích hoạt:** Xóa cache DNS cục bộ bằng lệnh `ipconfig /flushdns` và gửi yêu cầu tới `example.com`.
 * **Bộ lọc:** `dns`
+
 <img width="1724" height="236" alt="image" src="https://github.com/user-attachments/assets/db529af3-9096-4620-8c6f-486e490b71fd" />
+
 * **Hiện tượng & Phân tích:**
   * Client (`fd00:db80::1527:...`) gửi 2 truy vấn song song đến Local DNS Server (`fd00:db80::1`):
     * Record Type `A` (yêu cầu địa chỉ IPv4).
     * Record Type `AAAA` (yêu cầu địa chỉ IPv6).
-  * Server phản hồi bản ghi AAAA chứa địa chỉ IPv6: `2606:4700:10::ac42:93f3` (hạ tầng CDN Cloudflare). 
+  * Server phản hồi bản ghi AAAA chứa địa chỉ IPv6: `2606:4700:10::ac42:93f3` (hạ tầng CDN Cloudflare).
   * Do hệ thống ưu tiên kết nối IPv6 (Dual-Stack), toàn bộ phiên truyền tải sau đó tự động định tuyến qua IPv6.
 
 ---
 
 ### Bước 2: Thiết lập kết nối (TCP 3-Way Handshake)
 * **Bộ lọc:** `tcp.port == 80`
+
 <img width="1504" height="362" alt="image" src="https://github.com/user-attachments/assets/e892a4f4-f552-4fba-978f-127a7a673400" />
+
 * **Hiện tượng & Phân tích:**
-* **Quá trình bắt tay 3 bước diễn ra tin cậy giữa Client (port ngẫu nhiên `62437`) và Server (port `80`):
-* 1. **Packet #19 [SYN]:** Client gửi cờ `SYN`, khởi tạo phiên và thống nhất số thứ tự tuần tự ban đầu (`Seq = 0`).
+  Quá trình bắt tay 3 bước diễn ra tin cậy giữa Client (port ngẫu nhiên `62437`) và Server (port `80`):
+  1. **Packet #19 [SYN]:** Client gửi cờ `SYN`, khởi tạo phiên và thống nhất số thứ tự tuần tự ban đầu (`Seq = 0`).
   2. **Packet #20 [SYN, ACK]:** Server chấp thuận kết nối, gửi lại cờ `SYN-ACK`, xác nhận Sequence number tiếp theo (`Ack = 1`).
   3. **Packet #21 [ACK]:** Client gửi gói `ACK` chốt hoàn tất bắt tay. Kênh truyền TCP hai chiều được thiết lập thành công.
-
 ---
 
 ### Bước 3: Kiểm tra dữ liệu HTTP (HTTP Inspection)
